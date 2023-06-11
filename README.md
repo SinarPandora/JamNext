@@ -2,6 +2,10 @@
 
 > 下一代 Jam（果酱，基于 GoCQHTTP 协议的聊天机器人），使用 Scala 主流函数式技术栈 ZIO 对 Jam3 进行重写
 
+## ⚠️ Under Construction 仍在早期阶段 ⚠️
+
+项目处于早期阶段，暂时无法作为独立软件或工具库使用
+
 ## Modules 模块
 
 ### Protocol
