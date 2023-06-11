@@ -17,6 +17,7 @@ project/plugins/project/
  # Reference: https://scalameta.org/metals/
 .metals/
 .bloop/
+.bsp/
 project/metals.sbt
 
 ### Scala template

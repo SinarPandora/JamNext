@@ -11,25 +11,32 @@ lazy val root = (project in file("."))
     name := "JamNext"
   )
   .aggregate(
-    goCQProtocol,
-    cqServer,
-    jam
+    GoCQProtocol,
+    CQServer,
+    SXDLParser,
+    Jam
   )
 
-lazy val goCQProtocol = (project in file("protocol"))
+lazy val GoCQProtocol = (project in file("Protocol"))
   .settings(
     name := "GoCQProtocol",
     libraryDependencies ++= zioCore ++ shttp
   )
 
-lazy val cqServer = (project in file("CQServer"))
+lazy val CQServer = (project in file("CQServer"))
   .settings(
     name := "GoCQServer",
     libraryDependencies ++= zioCore ++ zioHttp ++ shttp
   )
-  .dependsOn(goCQProtocol)
+  .dependsOn(GoCQProtocol)
 
-lazy val jam = (project in file("Jam"))
+lazy val SXDLParser = (project in file("SXDLParser"))
+  .settings(
+    name := "SXDLParser",
+    libraryDependencies ++= zioCore
+  )
+
+lazy val Jam = (project in file("Jam"))
   .settings(
     name := "Jam",
     libraryDependencies ++= zioCore ++ zioHttp ++ config ++ shttp,
@@ -37,7 +44,10 @@ lazy val jam = (project in file("Jam"))
     addCommandAlias("dist", ";clean;scalafmtAll;universal:packageBin;")
   )
   .enablePlugins(JavaServerAppPackaging)
-  .dependsOn(cqServer)
+  .dependsOn(
+    SXDLParser,
+    CQServer
+  )
 
 lazy val zioCore = Seq(
   "dev.zio" %% "zio" % "2.0.15",
