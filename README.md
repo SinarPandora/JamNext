@@ -8,21 +8,10 @@
 
 ## Modules 模块
 
-### Protocol
-
-GoCQHTTP 协议定义层，使用纯 Scala 实现
-
-### CQServer
-
-GoCQHTTP 协议运行时，提供与 GoCQHTTP 客户端直接交互的能力
-
-### SXDLParser
-
-SXDL（简易扩展定义语言）解析器，用以解析果酱的行为定义脚本
-
-### Jam
-
-果酱本体，基于 GoCQHTTP 协议，可动态更改行为的聊天机器人
+* Protocol: GoCQHTTP 协议定义层，使用纯 Scala 实现
+* CQServer: GoCQHTTP 协议运行时，提供与 GoCQHTTP 客户端直接交互的能力
+* SXDLParser: SXDL（简易扩展定义语言）解析器，用以解析果酱的行为定义脚本
+* Jam: 果酱本体，基于 GoCQHTTP 协议，可动态更改行为的聊天机器人
 
 ## Installation 安装
 
