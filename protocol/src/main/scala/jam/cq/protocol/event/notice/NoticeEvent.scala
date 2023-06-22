@@ -1,5 +1,7 @@
 //noinspection ScalaUnusedSymbol
-package jam.cq.protocol.event.base
+package jam.cq.protocol.event.notice
+
+import jam.cq.protocol.event.base.Event
 
 /**
  * 基础通知消息
