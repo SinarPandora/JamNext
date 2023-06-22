@@ -6,6 +6,8 @@ ThisBuild / scalacOptions ++= Seq(
   "-Wvalue-discard"
 )
 
+addCompilerPlugin("com.hmemcpy" %% "zio-clippy" % "0.0.1")
+
 lazy val root = (project in file("."))
   .settings(
     name := "JamNext"
@@ -49,14 +51,19 @@ lazy val Jam = (project in file("Jam"))
     CQServer
   )
 
+val ZIO_CORE = "2.0.15"
+val SHTTP = "3.8.15"
+
 lazy val zioCore = Seq(
-  "dev.zio" %% "zio" % "2.0.15",
-  "dev.zio" %% "zio-direct" % "1.0.0-RC7"
+  "dev.zio" %% "zio" % ZIO_CORE,
+  "dev.zio" %% "zio-direct" % "1.0.0-RC7",
+  "dev.zio" %% "zio-prelude" % "1.0.0-RC19"
 )
 
 lazy val zioHttp = Seq(
   "dev.zio" %% "zio-http" % "3.0.0-RC2",
-  "dev.zio" %% "zio-json" % "0.5.0"
+  "dev.zio" %% "zio-json" % "0.5.0",
+  "com.softwaremill.sttp.client3" %% "zio" % SHTTP
 )
 
 lazy val config = Seq(
@@ -66,6 +73,5 @@ lazy val config = Seq(
 
 lazy val shttp = Seq(
   "com.softwaremill.sttp.client3" %% "core",
-  "com.softwaremill.sttp.client3" %% "zio",
   "com.softwaremill.sttp.client3" %% "zio-json"
-).map(_ % "3.8.15")
+).map(_ % SHTTP)
