@@ -1,10 +1,18 @@
-ThisBuild / version := "0.1.0-SNAPSHOT"
+ThisBuild / version      := "0.1.0-SNAPSHOT"
 ThisBuild / scalaVersion := "3.3.0"
-ThisBuild / maintainer := "SinarPandora@outlook.com"
+ThisBuild / maintainer   := "SinarPandora@outlook.com"
 ThisBuild / scalacOptions ++= Seq(
   "-Wunused:all",
   "-Wvalue-discard"
 )
+ThisBuild / scalacOptions += Seq(
+  "java.lang",
+  "scala",
+  "scala.Predef",
+  "scala.annotation",
+  "scala.util.chaining",
+  "zio"
+).mkString(start = "-Yimports:", sep = ",", end = "")
 
 addCompilerPlugin("com.hmemcpy" %% "zio-clippy" % "0.0.1")
 
@@ -52,22 +60,22 @@ lazy val Jam = (project in file("Jam"))
   )
 
 val ZIO_CORE = "2.0.15"
-val SHTTP = "3.8.15"
+val SHTTP    = "3.8.15"
 
 lazy val zioCore = Seq(
-  "dev.zio" %% "zio" % ZIO_CORE,
-  "dev.zio" %% "zio-direct" % "1.0.0-RC7",
+  "dev.zio" %% "zio"         % ZIO_CORE,
+  "dev.zio" %% "zio-direct"  % "1.0.0-RC7",
   "dev.zio" %% "zio-prelude" % "1.0.0-RC19"
 )
 
 lazy val zioHttp = Seq(
-  "dev.zio" %% "zio-http" % "3.0.0-RC2",
-  "dev.zio" %% "zio-json" % "0.5.0",
-  "com.softwaremill.sttp.client3" %% "zio" % SHTTP
+  "dev.zio"                       %% "zio-http" % "3.0.0-RC2",
+  "dev.zio"                       %% "zio-json" % "0.5.0",
+  "com.softwaremill.sttp.client3" %% "zio"      % SHTTP
 )
 
 lazy val config = Seq(
-  "dev.zio" %% "zio-config" % "4.0.0-RC16",
+  "dev.zio" %% "zio-config"          % "4.0.0-RC16",
   "dev.zio" %% "zio-config-typesafe" % "4.0.0-RC16"
 )
 
